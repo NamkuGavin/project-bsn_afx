@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Positioned(
-            left: 70,
+            left: 50,
             top: 30,
             child: Container(
               width: 75.w,
@@ -287,7 +287,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Positioned(
             top: 75,
-            left: 305,
+            left: 287,
             child: Image.asset("assets/money_logo.png", scale: 2),
           )
         ],
