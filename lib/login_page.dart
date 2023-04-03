@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Image.asset("assets/background.png",
-              scale: 5, fit: BoxFit.cover, width: double.infinity),
+              scale: 10, fit: BoxFit.fill, width: double.infinity),
           Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
