@@ -21,8 +21,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Stack(
         children: [
-          Image.asset("assets/background.jpeg",
-              fit: BoxFit.cover, width: double.infinity),
+          Image.asset("assets/background.png",
+              scale: 5, fit: BoxFit.cover, width: double.infinity),
           Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -103,9 +103,192 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.only(right: 100),
               child: Image.asset(
                 "assets/parachute_dollar.png",
-                scale: 2,
+                scale: 1.75,
               ),
             ),
+          ),
+          Positioned(
+            left: 70,
+            top: 30,
+            child: Container(
+              width: 75.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: const Color(0xFFEFEDED),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 40),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Welcome to BSN Internet Banking",
+                          style: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w900, fontSize: 25),
+                        ),
+                        SizedBox(height: 10.h),
+                        Text(
+                          "Manage your account online at your convenience",
+                          style: GoogleFonts.roboto(
+                            color: const Color(0xFF707070),
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        SizedBox(height: 40.h),
+                        Text(
+                          "Username",
+                          style: GoogleFonts.roboto(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(height: 4.h),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(12)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.8),
+                                spreadRadius: 1.5,
+                                blurRadius: 1, // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20.h),
+                        Text(
+                          "FORGOT PASSWORD",
+                          style: GoogleFonts.roboto(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(height: 8.h),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            minimumSize: MaterialStateProperty.all(
+                                Size(double.infinity, 50.h)),
+                            backgroundColor: MaterialStateProperty.all(
+                                SharedColor.primaryColor),
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return SharedColor.hoverButtonLoginColor;
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            "LOGIN",
+                            style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      borderRadius:
+                          BorderRadius.vertical(bottom: Radius.circular(10)),
+                      color: Colors.white,
+                    ),
+                    height: 75.h,
+                    child: IntrinsicHeight(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Image.asset(
+                                        "assets/security.png",
+                                        scale: 1.75,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 6),
+                                        child: Image.asset(
+                                          "assets/security_new.png",
+                                          scale: 2.25,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "SECURITY ALERT",
+                                  style: GoogleFonts.roboto(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 11),
+                                )
+                              ],
+                            ),
+                            const VerticalDivider(
+                              endIndent: 10,
+                              indent: 10,
+                              color: Colors.black,
+                              thickness: 1,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    "assets/finger.png",
+                                    scale: 2.2,
+                                  ),
+                                  Text(
+                                    "ANNOUNCEMENTS",
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 11),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 75,
+            left: 305,
+            child: Image.asset("assets/money_logo.png", scale: 2),
           )
         ],
       ),
@@ -146,7 +329,7 @@ class _LoginPageState extends State<LoginPage> {
                   overlayColor: MaterialStateProperty.resolveWith<Color?>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.hovered)) {
-                        return SharedColor.hoverButtonColor;
+                        return SharedColor.hoverButtonDemoColor;
                       }
                       return null;
                     },
