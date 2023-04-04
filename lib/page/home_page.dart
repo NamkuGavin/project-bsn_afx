@@ -12,69 +12,49 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _isHovering1 = false;
-  bool _isHovering2 = false;
-  bool _isHovering3 = false;
+  bool _isHoveringAppbar1 = false;
+  bool _isHoveringAppbar2 = false;
+  bool _isHoveringAppbar3 = false;
+  bool _isHoveringDashboard1 = false;
+  bool _isHoveringDashboard2 = false;
+  bool _isHoveringDashboard3 = false;
+  final bool _isHoveringQuicklink1 = false;
+  final bool _isHoveringQuicklink2 = false;
+  final bool _isHoveringQuicklink3 = false;
+  final bool _isHoveringQuicklink4 = false;
+  final bool _isHoveringQuicklink5 = false;
+  final bool _isHoveringQuicklink6 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarWidget(),
-      body: Row(
-        children: [
-          IntrinsicWidth(
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-              color: SharedColor.secondary,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    upperDashboard(),
-                    Text(
-                      "Quick Links",
-                      style: GoogleFonts.roboto(
-                          fontWeight: FontWeight.w700,
-                          color: SharedColor.text,
-                          fontSize: 16),
-                    ),
-                    SizedBox(height: 15.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        GridDashboard(
-                            logo: "assets/duit.png",
-                            title: "DuitNow\nTransfer"),
-                        GridDashboard(
-                            logo: "assets/jom_pay.png", title: "JomPAY"),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Row(
+              children: [
+                IntrinsicWidth(
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                    color: SharedColor.secondary,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        upperDashboard(),
+                        downDashboard(),
                       ],
                     ),
-                    SizedBox(height: 8.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        GridDashboard(
-                            logo: "assets/efficiency.png",
-                            title: "Investments"),
-                        GridDashboard(
-                            logo: "assets/trade.png", title: "Transfers"),
-                      ],
-                    ),
-                    SizedBox(height: 8.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        GridDashboard(
-                            logo: "assets/pay.png", title: "Payments"),
-                        GridDashboard(
-                            logo: "assets/phone.png", title: "Prepaid Reload"),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                )
+              ],
             ),
-          )
-        ],
+            Positioned(
+              top: 125,
+              left: 150,
+              child: Image.asset("assets/note.png", scale: 2),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -95,17 +75,18 @@ class _HomePageState extends State<HomePage> {
             children: [
               MouseRegion(
                 onEnter: (PointerEvent event) =>
-                    setState(() => _isHovering1 = true),
+                    setState(() => _isHoveringAppbar1 = true),
                 onExit: (PointerEvent event) =>
-                    setState(() => _isHovering1 = false),
+                    setState(() => _isHoveringAppbar1 = false),
                 child: Text(
                   "Settings\n& Other Services",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.roboto(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
-                      color:
-                          _isHovering1 ? SharedColor.hoverText : Colors.white),
+                      color: _isHoveringAppbar1
+                          ? SharedColor.hoverText
+                          : Colors.white),
                 ),
               ),
               SizedBox(width: 10.w),
@@ -116,32 +97,34 @@ class _HomePageState extends State<HomePage> {
               SizedBox(width: 2.w),
               MouseRegion(
                 onEnter: (PointerEvent event) =>
-                    setState(() => _isHovering2 = true),
+                    setState(() => _isHoveringAppbar2 = true),
                 onExit: (PointerEvent event) =>
-                    setState(() => _isHovering2 = false),
+                    setState(() => _isHoveringAppbar2 = false),
                 child: Text(
                   "Messages",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.roboto(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
-                      color:
-                          _isHovering2 ? SharedColor.hoverText : Colors.white),
+                      color: _isHoveringAppbar2
+                          ? SharedColor.hoverText
+                          : Colors.white),
                 ),
               ),
               SizedBox(width: 10.w),
               MouseRegion(
                 onEnter: (PointerEvent event) =>
-                    setState(() => _isHovering3 = true),
+                    setState(() => _isHoveringAppbar3 = true),
                 onExit: (PointerEvent event) =>
-                    setState(() => _isHovering3 = false),
+                    setState(() => _isHoveringAppbar3 = false),
                 child: Text(
                   "Contact Us",
                   style: GoogleFonts.roboto(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
-                      color:
-                          _isHovering3 ? SharedColor.hoverText : Colors.white),
+                      color: _isHoveringAppbar3
+                          ? SharedColor.hoverText
+                          : Colors.white),
                 ),
               ),
               SizedBox(width: 8.w),
@@ -151,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                   foregroundColor: MaterialStateProperty.resolveWith<Color?>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.hovered)) {
-                        return SharedColor.hoverTextButton;
+                        return SharedColor.textSecondary;
                       }
                       return SharedColor.primary;
                     },
@@ -185,7 +168,7 @@ class _HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.fromLTRB(15, 15, 100, 15),
+          padding: const EdgeInsets.fromLTRB(15, 15, 125, 15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
             color: SharedColor.primary,
@@ -197,34 +180,115 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         SizedBox(height: 15.h),
-        Text(
-          "Transfers / Payments /\nPrepaid Reload",
-          style: GoogleFonts.roboto(
-              fontWeight: FontWeight.w700,
-              color: SharedColor.text,
-              fontSize: 16),
+        MouseRegion(
+          onEnter: (PointerEvent event) =>
+              setState(() => _isHoveringDashboard1 = true),
+          onExit: (PointerEvent event) =>
+              setState(() => _isHoveringDashboard1 = false),
+          child: Text(
+            "Transfers / Payments /\nPrepaid Reload",
+            style: GoogleFonts.roboto(
+                fontWeight: FontWeight.w700,
+                color: _isHoveringDashboard1
+                    ? SharedColor.textSecondary
+                    : SharedColor.text,
+                fontSize: 16),
+          ),
         ),
         SizedBox(height: 40.h),
-        Text(
-          "Apply",
-          style: GoogleFonts.roboto(
-              fontWeight: FontWeight.w700,
-              color: SharedColor.text,
-              fontSize: 16),
+        MouseRegion(
+          onEnter: (PointerEvent event) =>
+              setState(() => _isHoveringDashboard2 = true),
+          onExit: (PointerEvent event) =>
+              setState(() => _isHoveringDashboard2 = false),
+          child: Text(
+            "Apply",
+            style: GoogleFonts.roboto(
+                fontWeight: FontWeight.w700,
+                color: _isHoveringDashboard2
+                    ? SharedColor.textSecondary
+                    : SharedColor.text,
+                fontSize: 16),
+          ),
         ),
         SizedBox(height: 40.h),
-        Text(
-          "DuitNow",
-          style: GoogleFonts.roboto(
-              fontWeight: FontWeight.w700,
-              color: SharedColor.text,
-              fontSize: 16),
+        MouseRegion(
+          onEnter: (PointerEvent event) =>
+              setState(() => _isHoveringDashboard3 = true),
+          onExit: (PointerEvent event) =>
+              setState(() => _isHoveringDashboard3 = false),
+          child: Text(
+            "DuitNow",
+            style: GoogleFonts.roboto(
+                fontWeight: FontWeight.w700,
+                color: _isHoveringDashboard3
+                    ? SharedColor.textSecondary
+                    : SharedColor.text,
+                fontSize: 16),
+          ),
         ),
         SizedBox(height: 15.h),
         Divider(
           color: SharedColor.primary,
         ),
         SizedBox(height: 15.h),
+      ],
+    );
+  }
+
+  downDashboard() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Quick Links",
+          style: GoogleFonts.roboto(
+              fontWeight: FontWeight.w700,
+              color: SharedColor.text,
+              fontSize: 16),
+        ),
+        SizedBox(height: 15.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GridDashboard(
+                logo: "assets/duit.png",
+                title: "DuitNow\nTransfer",
+                ishovering: _isHoveringQuicklink1),
+            GridDashboard(
+                logo: "assets/jom_pay.png",
+                title: "JomPAY",
+                ishovering: _isHoveringQuicklink2),
+          ],
+        ),
+        SizedBox(height: 8.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GridDashboard(
+                logo: "assets/efficiency.png",
+                title: "Investments",
+                ishovering: _isHoveringQuicklink3),
+            GridDashboard(
+                logo: "assets/trade.png",
+                title: "Transfers",
+                ishovering: _isHoveringQuicklink4),
+          ],
+        ),
+        SizedBox(height: 8.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GridDashboard(
+                logo: "assets/pay.png",
+                title: "Payments",
+                ishovering: _isHoveringQuicklink5),
+            GridDashboard(
+                logo: "assets/phone.png",
+                title: "Prepaid Reload",
+                ishovering: _isHoveringQuicklink6),
+          ],
+        ),
       ],
     );
   }

@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   foregroundColor: MaterialStateProperty.resolveWith<Color?>(
                     (Set<MaterialState> states) {
                       if (states.contains(MaterialState.hovered)) {
-                        return SharedColor.hoverTextButton;
+                        return SharedColor.textSecondary;
                       }
                       return SharedColor.primary;
                     },
