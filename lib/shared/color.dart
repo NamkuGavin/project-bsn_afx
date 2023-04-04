@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SharedColor {
-  static Color primaryColor = const Color(0xFF00A1B1);
-  static Color hoverButtonDemoColor = const Color(0xFF032057);
-  static Color hoverButtonLoginColor = const Color(0xFFC94101);
-  static Color hoverTextButtonColor = const Color(0xFF87ACF2);
+  static Color primary = const Color(0xFF00A1B1);
+  static Color hoverButtonDemo = const Color(0xFF032057);
+  static Color hoverText = const Color(0xFF002F87);
+  static Color hoverButtonLogin = const Color(0xFFC94101);
+  static Color hoverTextButton = const Color(0xFF87ACF2);
 }
