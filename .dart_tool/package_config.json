@@ -134,6 +134,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "page_transition",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/page_transition-2.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.2",
       "packageUri": "lib/",
@@ -290,7 +296,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-04-03T10:14:36.755096Z",
+  "generated": "2023-04-04T01:03:52.561349Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

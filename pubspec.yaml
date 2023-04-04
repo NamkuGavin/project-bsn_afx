@@ -39,6 +39,7 @@ dependencies:
   flutter_screenutil:
   flutter_svg:
   google_fonts:
+  page_transition:
 
 dev_dependencies:
   flutter_test:
