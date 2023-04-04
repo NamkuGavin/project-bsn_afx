@@ -6,7 +6,12 @@ import 'package:google_fonts/google_fonts.dart';
 class GridDashboard extends StatefulWidget {
   final String logo;
   final String title;
-  const GridDashboard({Key? key, required this.logo, required this.title})
+  bool ishovering;
+  GridDashboard(
+      {Key? key,
+      required this.logo,
+      required this.title,
+      required this.ishovering})
       : super(key: key);
 
   @override
@@ -29,14 +34,29 @@ class _GridDashboardState extends State<GridDashboard> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(widget.logo, scale: 2),
+            Image.asset(widget.logo,
+                scale: 2,
+                color: widget.logo == "assets/duit.png" ||
+                        widget.logo == "assets/jom_pay.png"
+                    ? null
+                    : widget.ishovering
+                        ? SharedColor.textSecondary
+                        : null),
             SizedBox(height: 10.h),
-            Text(
-              widget.title,
-              style: GoogleFonts.roboto(
-                  fontWeight: FontWeight.w600,
-                  color: SharedColor.text,
-                  fontSize: 12),
+            MouseRegion(
+              onEnter: (PointerEvent event) =>
+                  setState(() => widget.ishovering = true),
+              onExit: (PointerEvent event) =>
+                  setState(() => widget.ishovering = false),
+              child: Text(
+                widget.title,
+                style: GoogleFonts.roboto(
+                    fontWeight: FontWeight.w600,
+                    color: widget.ishovering
+                        ? SharedColor.textSecondary
+                        : SharedColor.text,
+                    fontSize: 12),
+              ),
             ),
           ],
         ),

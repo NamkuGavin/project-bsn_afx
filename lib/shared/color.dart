@@ -6,6 +6,6 @@ class SharedColor {
   static Color hoverButtonDemo = const Color(0xFF032057);
   static Color hoverText = const Color(0xFF002F87);
   static Color hoverButtonLogin = const Color(0xFFC94101);
-  static Color hoverTextButton = const Color(0xFF87ACF2);
+  static Color textSecondary = const Color(0xFF87ACF2);
   static Color text = const Color(0xFF777F80);
 }
