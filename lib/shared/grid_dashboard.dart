@@ -22,33 +22,33 @@ class _GridDashboardState extends State<GridDashboard> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: SharedColor.primary),
-            color: Colors.white),
-        height: 100.h,
-        margin: const EdgeInsets.symmetric(horizontal: 5),
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(widget.logo,
-                scale: 2,
-                color: widget.logo == "assets/duit.png" ||
-                        widget.logo == "assets/jom_pay.png"
-                    ? null
-                    : widget.ishovering
-                        ? SharedColor.textSecondary
-                        : null),
-            SizedBox(height: 10.h),
-            MouseRegion(
-              onEnter: (PointerEvent event) =>
-                  setState(() => widget.ishovering = true),
-              onExit: (PointerEvent event) =>
-                  setState(() => widget.ishovering = false),
-              child: Text(
+      child: MouseRegion(
+        onEnter: (PointerEvent event) =>
+            setState(() => widget.ishovering = true),
+        onExit: (PointerEvent event) =>
+            setState(() => widget.ishovering = false),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: SharedColor.primary),
+              color: Colors.white),
+          height: 100.h,
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(widget.logo,
+                  scale: 2,
+                  color: widget.logo == "assets/duit.png" ||
+                          widget.logo == "assets/jom_pay.png"
+                      ? null
+                      : widget.ishovering
+                          ? SharedColor.textSecondary
+                          : null),
+              SizedBox(height: 10.h),
+              Text(
                 widget.title,
                 style: GoogleFonts.roboto(
                     fontWeight: FontWeight.w600,
@@ -57,8 +57,8 @@ class _GridDashboardState extends State<GridDashboard> {
                         : SharedColor.text,
                     fontSize: 12),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
