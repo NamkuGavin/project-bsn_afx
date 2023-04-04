@@ -1,4 +1,5 @@
 import 'package:bsn_afx/shared/color.dart';
+import 'package:bsn_afx/shared/grid_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,6 +19,63 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarWidget(),
+      body: Row(
+        children: [
+          IntrinsicWidth(
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+              color: SharedColor.secondary,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    upperDashboard(),
+                    Text(
+                      "Quick Links",
+                      style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.w700,
+                          color: SharedColor.text,
+                          fontSize: 16),
+                    ),
+                    SizedBox(height: 15.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        GridDashboard(
+                            logo: "assets/duit.png",
+                            title: "DuitNow\nTransfer"),
+                        GridDashboard(
+                            logo: "assets/jom_pay.png", title: "JomPAY"),
+                      ],
+                    ),
+                    SizedBox(height: 8.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        GridDashboard(
+                            logo: "assets/efficiency.png",
+                            title: "Investments"),
+                        GridDashboard(
+                            logo: "assets/trade.png", title: "Transfers"),
+                      ],
+                    ),
+                    SizedBox(height: 8.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        GridDashboard(
+                            logo: "assets/pay.png", title: "Payments"),
+                        GridDashboard(
+                            logo: "assets/phone.png", title: "Prepaid Reload"),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -118,6 +176,55 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         )
+      ],
+    );
+  }
+
+  upperDashboard() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.fromLTRB(15, 15, 100, 15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: SharedColor.primary,
+          ),
+          child: Text(
+            "My Accounts",
+            style: GoogleFonts.roboto(
+                fontWeight: FontWeight.w600, color: Colors.white, fontSize: 16),
+          ),
+        ),
+        SizedBox(height: 15.h),
+        Text(
+          "Transfers / Payments /\nPrepaid Reload",
+          style: GoogleFonts.roboto(
+              fontWeight: FontWeight.w700,
+              color: SharedColor.text,
+              fontSize: 16),
+        ),
+        SizedBox(height: 40.h),
+        Text(
+          "Apply",
+          style: GoogleFonts.roboto(
+              fontWeight: FontWeight.w700,
+              color: SharedColor.text,
+              fontSize: 16),
+        ),
+        SizedBox(height: 40.h),
+        Text(
+          "DuitNow",
+          style: GoogleFonts.roboto(
+              fontWeight: FontWeight.w700,
+              color: SharedColor.text,
+              fontSize: 16),
+        ),
+        SizedBox(height: 15.h),
+        Divider(
+          color: SharedColor.primary,
+        ),
+        SizedBox(height: 15.h),
       ],
     );
   }
